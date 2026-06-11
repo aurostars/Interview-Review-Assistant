@@ -1,0 +1,19 @@
+# Local configuration
+.interview-analyzer-config.json
+.claude/
+
+# Data directory
+data/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
