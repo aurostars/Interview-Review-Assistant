@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面试复盘助手 PRD v1.0 - 最终版</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+
+        /* Header */
+        .doc-header { background: #fff; border-radius: 12px; padding: 32px; margin-bottom: 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+        .doc-header h1 { font-size: 28px; margin-bottom: 16px; color: #1a1a2e; }
+        .meta-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        .meta-table td { padding: 8px 12px; border: 1px solid #e9ecef; }
+        .meta-table td:first-child { background: #f8f9fa; font-weight: 500; width: 120px; }
+
+        /* Version Switcher */
+        .version-switcher { position: fixed; top: 20px; right: 20px; z-index: 100; }
+        .version-switcher select { padding: 6px 12px; border-radius: 6px; border: 1px solid #dee2e6; font-size: 13px; background: #fff; }
+
+        /* TOC */
+        .toc { position: fixed; top: 70px; right: 20px; width: 200px; background: #fff; border-radius: 8px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); font-size: 13px; max-height: calc(100vh - 100px); overflow-y: auto; }
+        .toc h4 { margin-bottom: 8px; color: #666; font-size: 12px; text-transform: uppercase; }
+        .toc a { display: block; padding: 4px 0; color: #495057; text-decoration: none; }
+        .toc a:hover { color: #4263eb; }
+
+        /* Sections */
+        .section { background: #fff; border-radius: 12px; padding: 32px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+        h2 { font-size: 22px; color: #1a1a2e; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #4263eb; }
+        h3 { font-size: 17px; color: #343a40; margin: 24px 0 12px 0; }
+        h4 { font-size: 15px; color: #495057; margin: 16px 0 8px 0; }
+        p { margin-bottom: 12px; }
+        ul, ol { margin: 8px 0 16px 20px; }
+        li { margin-bottom: 6px; }
+
+        /* Tables */
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        th, td { padding: 10px 12px; border: 1px solid #e9ecef; text-align: left; }
+        th { background: #f1f3f5; font-weight: 600; }
+        tr:nth-child(even) { background: #f8f9fa; }
+
+        /* Tags */
+        .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 500; margin-right: 4px; }
+        .tag-required { background: #fee2e2; color: #dc2626; }
+        .tag-important { background: #fef3c7; color: #d97706; }
+        .tag-nice { background: #dbeafe; color: #2563eb; }
+
+        /* Feature Module with Prototype */
+        .feature-module { margin: 24px 0; border: 1px solid #e9ecef; border-radius: 12px; overflow: hidden; }
+        .feature-header { background: #f8f9fa; padding: 16px 24px; border-bottom: 1px solid #e9ecef; }
+        .feature-header h3 { margin: 0; }
+        .feature-content { display: flex; gap: 24px; padding: 24px; }
+        .logic-section { flex: 1; min-width: 0; }
+        .prototype-section { flex-shrink: 0; }
+        .prototype-frame { border: 2px solid #e9ecef; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+        /* Mermaid */
+        .mermaid { margin: 16px 0; padding: 16px; background: #f8f9fa; border-radius: 8px; }
+
+        @media (max-width: 1400px) { .toc { display: none; } }
+        @media (max-width: 1000px) {
+            .feature-content { flex-direction: column; }
+            .prototype-section { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Version Switcher -->
+<div class="version-switcher">
+    <select onchange="if(this.value)window.location=this.value">
+        <option value="" selected>v1.0 最终版</option>
+    </select>
+</div>
+
+<!-- TOC -->
+<nav class="toc">
+    <h4>目录</h4>
+    <a href="#info">项目信息</a>
+    <a href="#background">1. 需求背景</a>
+    <a href="#goals">2. 需求目标</a>
+    <a href="#users">3. 用户与场景</a>
+    <a href="#features">4. 功能清单</a>
+    <a href="#solution">5. 详细方案</a>
+    <a href="#flowcharts">6. 业务流程图</a>
+    <a href="#exceptions">7. 异常与边界</a>
+    <a href="#tracking">8. 数据埋点</a>
+    <a href="#roadmap">9. 未来规划</a>
+</nav>
+
+<div class="container">
+
+<!-- Project Info -->
+<div class="doc-header" id="info">
+    <h1>面试复盘助手 - 产品需求文档</h1>
+    <table class="meta-table">
+        <tr><td>产品名称</td><td>面试复盘助手（Interview Replay）</td></tr>
+        <tr><td>版本号</td><td>v1.0 最终版</td></tr>
+        <tr><td>文档状态</td><td>已评审通过</td></tr>
+        <tr><td>创建日期</td><td>2026-06-04</td></tr>
+        <tr><td>目标用户</td><td>应届生求职者</td></tr>
+        <tr><td>产品形态</td><td>Web应用（响应式）</td></tr>
+    </table>
+
+    <h3 style="margin-top:24px;">版本历史</h3>
+    <table>
+        <tr><th>版本</th><th>日期</th><th>变更说明</th></tr>
+        <tr><td>v1.0 最终版</td><td>2026-06-04</td><td>整合原型和流程图,完成详细方案</td></tr>
+        <tr><td>v1.0</td><td>2026-06-04</td><td>初始版本,覆盖核心功能定义</td></tr>
+    </table>
+</div>
+
+<!-- 1. Requirement Background -->
+<div class="section" id="background">
+    <h2>1. 需求背景</h2>
+    <h3>现状问题</h3>
+    <p>应届生在求职期间通常面临10场左右的面试。当前绝大多数求职者在面试结束后完全依赖记忆进行复盘，存在以下问题：</p>
+    <ul>
+        <li><strong>遗忘快</strong>：面试结束后数小时，具体问答细节已大幅遗忘，无法精准回顾</li>
+        <li><strong>无法量化</strong>：不清楚自己在哪些维度表现好、哪些差，改进无据可依</li>
+        <li><strong>缺乏纵向追踪</strong>：多场面试之间的共性弱点和高频考点无法被系统发现</li>
+        <li><strong>改进低效</strong>：即使知道"答得不好"，也不知道具体应该怎样改进表达</li>
+    </ul>
+
+    <h3>市场空白</h3>
+    <p>目前市面上的面试相关产品集中在"面试题库"和"模拟面试"领域，缺乏一款针对<strong>真实面试录音</strong>进行结构化分析、质量评价和改善建议的工具。</p>
+</div>
+
+<!-- 2. Goals -->
+<div class="section" id="goals">
+    <h2>2. 需求目标</h2>
+    <table>
+        <tr><th>目标类型</th><th>描述</th><th>衡量指标</th><th>目标值</th></tr>
+        <tr><td>核心体验</td><td>用户上传录音后获得完整结构化面试纪要</td><td>纪要生成成功率</td><td>≥95%</td></tr>
+        <tr><td>核心体验</td><td>每个问答对获得有针对性的改善建议</td><td>用户认为建议有用的比例</td><td>≥70%</td></tr>
+        <tr><td>用户价值</td><td>帮助用户发现跨面试的共性问题</td><td>使用规律分析功能的用户比例</td><td>≥60%</td></tr>
+        <tr><td>效率提升</td><td>比手动复盘节省时间</td><td>相比手动整理的时间节省</td><td>≥80%</td></tr>
+        <tr><td>留存</td><td>用户在求职期持续使用</td><td>上传≥3场面试的用户比例</td><td>≥40%</td></tr>
+    </table>
+</div>
+
+<!-- 3. Users & Scenarios -->
+<div class="section" id="users">
+    <h2>3. 用户与场景</h2>
+
+    <h3>用户画像</h3>
+    <table>
+        <tr><th>维度</th><th>描述</th></tr>
+        <tr><td>身份</td><td>在校应届生或刚毕业的求职者</td></tr>
+        <tr><td>求职阶段</td><td>正在密集面试期（1-3个月内完成约10场面试）</td></tr>
+        <tr><td>面试形式</td><td>一对一面试为主，线上/线下均有</td></tr>
+        <tr><td>技术背景</td><td>各方向均有，上传时通过岗位标签区分</td></tr>
+        <tr><td>设备</td><td>手机录音 + 电脑端查看分析</td></tr>
+        <tr><td>使用周期</td><td>求职期工具，拿到offer后停止使用</td></tr>
+    </table>
+
+    <h3>核心用户场景</h3>
+    <ol>
+        <li><strong>面试后即时上传</strong>：小王刚面完一场后端面试，掏出手机把30分钟录音上传到网站</li>
+        <li><strong>查看纪要和建议</strong>：几小时后打开电脑，阅读结构化纪要，查看每个回答的评价和改进示例</li>
+        <li><strong>多轮复盘</strong>：同一家公司二面前，回顾一面的改善点，重点准备薄弱项</li>
+        <li><strong>规律洞察</strong>：面了5家公司后，查看跨面试分析，发现自己在"项目复杂度表达"上总是丢分</li>
+    </ol>
+
+    <h3>用户旅程地图</h3>
+    <table>
+        <tr>
+            <th>阶段</th>
+            <th>用户触点</th>
+            <th>用户行为</th>
+            <th>痛点 / 情绪</th>
+            <th>产品机会</th>
+        </tr>
+        <tr>
+            <td>面试结束</td>
+            <td>走出面试间/挂断视频</td>
+            <td>回忆面试内容，想记录但无从下手</td>
+            <td style="color: #c92a2a;">焦虑、记忆模糊</td>
+            <td>引导立即上传录音，零门槛</td>
+        </tr>
+        <tr>
+            <td>上传录音</td>
+            <td>Web上传页</td>
+            <td>选择录音文件，标注公司/岗位/轮次</td>
+            <td style="color: #6c757d;">期待结果</td>
+            <td>极简上传流程，3步完成</td>
+        </tr>
+        <tr>
+            <td>等待处理</td>
+            <td>处理状态页</td>
+            <td>等待转录和分析完成</td>
+            <td style="color: #6c757d;">略有耐心</td>
+            <td>进度可视化，预估剩余时间</td>
+        </tr>
+        <tr>
+            <td>查看纪要</td>
+            <td>面试详情页</td>
+            <td>逐条阅读问答记录、评价和建议</td>
+            <td style="color: #2b8a3e;">恍然大悟、有方向</td>
+            <td>高亮好/差标注，改善示例默认展开</td>
+        </tr>
+        <tr>
+            <td>规律分析</td>
+            <td>洞察面板</td>
+            <td>查看跨面试的共性问题和高频考点</td>
+            <td style="color: #2b8a3e;">有成就感、有目标</td>
+            <td>可视化薄弱维度，推荐改进优先级</td>
+        </tr>
+    </table>
+</div>
+
+<!-- 4. Feature List -->
+<div class="section" id="features">
+    <h2>4. 功能清单</h2>
+    <table>
+        <tr><th>模块</th><th>功能</th><th>优先级</th><th>说明</th></tr>
+        <tr>
+            <td rowspan="3">录音管理</td>
+            <td>录音上传</td>
+            <td><span class="tag tag-required">必需</span></td>
+            <td>支持常见手机录音格式（m4a, mp3, wav），单文件≤500MB</td>
+        </tr>
+        <tr>
+            <td>面试信息标注</td>
+            <td><span class="tag tag-required">必需</span></td>
+            <td>上传时填写：公司名称、岗位标签、面试轮次、面试日期</td>
+        </tr>
+        <tr>
+            <td>处理状态追踪</td>
+            <td><span class="tag tag-required">必需</span></td>
+            <td>显示转录进度和预估完成时间</td>
+        </tr>
+        <tr>
+            <td rowspan="4">面试纪要</td>
+            <td>语音转录</td>
+            <td><span class="tag tag-required">必需</span></td>
+            <td>云端ASR，区分面试官/候选人，低置信度片段标记</td>
+        </tr>
+        <tr>
+            <td>结构化问答提取</td>
+            <td><span class="tag tag-required">必需</span></td>
+            <td>自动切分为独立问答对，识别追问链路</td>
+        </tr>
+        <tr>
+            <td>考察意图标注</td>
+            <td><span class="tag tag-required">必需</span></td>
+            <td>每个问题标注面试官的考察维度</td>
+        </tr>
+        <tr>
+            <td>回答质量评价</td>
+            <td><span class="tag tag-required">必需</span></td>
+            <td>标注好/差部分，给出具体原因</td>
+        </tr>
+        <tr>
+            <td rowspan="2">改善建议</td>
+            <td>改进回答示例</td>
+            <td><span class="tag tag-required">必需</span></td>
+            <td>针对每个问题生成优化后的回答范例</td>
+        </tr>
+        <tr>
+            <td>改善维度标签</td>
+            <td><span class="tag tag-important">重要</span></td>
+            <td>如"表达逻辑""专业深度""STAR结构"等标签化</td>
+        </tr>
+        <tr>
+            <td rowspan="3">规律分析</td>
+            <td>共性弱点发现</td>
+            <td><span class="tag tag-required">必需</span></td>
+            <td>≥2场面试后触发，识别重复出现的薄弱环节</td>
+        </tr>
+        <tr>
+            <td>高频考点趋势</td>
+            <td><span class="tag tag-required">必需</span></td>
+            <td>统计跨面试的高频问题方向和考察意图</td>
+        </tr>
+        <tr>
+            <td>改善进度追踪</td>
+            <td><span class="tag tag-important">重要</span></td>
+            <td>同一维度在前后面试中的表现变化</td>
+        </tr>
+        <tr>
+            <td rowspan="3">数据组织</td>
+            <td>公司维度视图</td>
+            <td><span class="tag tag-required">必需</span></td>
+            <td>按公司分组，展示该公司各轮次面试</td>
+        </tr>
+        <tr>
+            <td>岗位标签筛选</td>
+            <td><span class="tag tag-required">必需</span></td>
+            <td>按岗位方向筛选和对比面试</td>
+        </tr>
+        <tr>
+            <td>时间线视图</td>
+            <td><span class="tag tag-nice">加分</span></td>
+            <td>所有面试按日期排列的全景视图</td>
+        </tr>
+    </table>
+</div>
+
+<!-- 5. Detailed Solution -->
+<div class="section" id="solution">
+    <h2>5. 详细方案</h2>
+    <p>以下为各核心功能模块的详细交互逻辑、业务规则和原型演示。</p>
+
+    <!-- Feature Module 1: Upload -->
+    <div class="feature-module">
+        <div class="feature-header">
+            <h3>功能模块：录音上传与信息标注</h3>
+        </div>
+        <div class="feature-content">
+            <div class="logic-section">
+                <h4>交互流程图</h4>
+                <div class="mermaid">
+flowchart TD
+    A[点击上传按钮] --> B[弹出上传模态框]
+    B --> C[选择录音文件]
+    C --> D[填写面试信息]
+    D --> E{信息校验}
+    E -->|必填项缺失| F[提示错误]
+    E -->|通过| G[提交上传]
+    G --> H[显示处理中]
+                </div>
+
+                <h4>规则说明</h4>
+                <ul>
+                    <li><strong>触发条件</strong>：用户点击"上传面试录音"按钮</li>
+                    <li><strong>必填项</strong>：公司名称、岗位标签</li>
+                    <li><strong>默认值</strong>：面试轮次默认"一面"，日期默认今天</li>
+                    <li><strong>格式限制</strong>：m4a/mp3/wav/aac，≤500MB</li>
+                    <li><strong>重复检测</strong>：同公司同轮次已存在时弹出确认覆盖弹窗</li>
+                </ul>
+            </div>
+            <div class="prototype-section">
+                <div class="prototype-frame">
+                    <iframe
+                        src="../prototype/prototype_v1.0.html?focus=upload-modal#home"
+                        style="width: 500px; height: 600px; border: none;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feature Module 2: Company List -->
+    <div class="feature-module">
+        <div class="feature-header">
+            <h3>功能模块：公司维度视图</h3>
+        </div>
+        <div class="feature-content">
+            <div class="logic-section">
+                <h4>交互流程图</h4>
+                <div class="mermaid">
+flowchart TD
+    A[进入首页] --> B[展示公司卡片列表]
+    B --> C{用户操作}
+    C -->|点击岗位标签| D[筛选对应岗位]
+    C -->|点击公司卡片| E[进入公司详情]
+    E --> F[展示该公司各轮面试]
+                </div>
+
+                <h4>规则说明</h4>
+                <ul>
+                    <li><strong>排序</strong>：按最近面试日期倒序</li>
+                    <li><strong>卡片信息</strong>：公司名、最近面试日期、岗位标签、面试轮次数</li>
+                    <li><strong>筛选</strong>：顶部岗位标签栏支持按岗位过滤</li>
+                    <li><strong>空状态</strong>：无面试时显示"暂无面试记录，上传第一场面试"</li>
+                </ul>
+            </div>
+            <div class="prototype-section">
+                <div class="prototype-frame">
+                    <iframe
+                        src="../prototype/prototype_v1.0.html?focus=company-card#home"
+                        style="width: 800px; height: 500px; border: none;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feature Module 3: Interview Detail -->
+    <div class="feature-module">
+        <div class="feature-header">
+            <h3>功能模块：面试详情与问答评价</h3>
+        </div>
+        <div class="feature-content">
+            <div class="logic-section">
+                <h4>交互流程图</h4>
+                <div class="mermaid">
+flowchart TD
+    A[点击面试条目] --> B[展开侧边栏目录]
+    B --> C[显示面试概览]
+    C --> D[展示问答列表]
+    D --> E{用户操作}
+    E -->|点击目录项| F[滚动到对应问题]
+    E -->|点击改进建议| G[展开/收起建议]
+    E -->|鼠标移出侧栏| H[保持侧栏展开]
+                </div>
+
+                <h4>规则说明</h4>
+                <ul>
+                    <li><strong>侧边栏</strong>：进入详情页自动展开至280px，显示面包屑导航和问题目录</li>
+                    <li><strong>问答结构</strong>：问题→考察意图标签→回答→评价(✓好/✗差)→改进建议</li>
+                    <li><strong>改进建议</strong>：默认展开状态，可点击收起</li>
+                    <li><strong>低置信度标记</strong>：转录不清楚的片段显示⚠️图标和提示</li>
+                    <li><strong>追问链路</strong>：基于前一问题的深入追问用缩进+箭头标识</li>
+                </ul>
+            </div>
+            <div class="prototype-section">
+                <div class="prototype-frame">
+                    <iframe
+                        src="../prototype/prototype_v1.0.html?focus=qa-item#interview-detail"
+                        style="width: 900px; height: 700px; border: none;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feature Module 4: Interview Item -->
+    <div class="feature-module">
+        <div class="feature-header">
+            <h3>功能模块：面试条目交互</h3>
+        </div>
+        <div class="feature-content">
+            <div class="logic-section">
+                <h4>交互流程图</h4>
+                <div class="mermaid">
+flowchart TD
+    A[用户进入公司详情] --> B[展示面试条目列表]
+    B --> C{鼠标悬停}
+    C --> D[背景变蓝 + 边框高亮]
+    D --> E[右侧箭头前进动画]
+    E --> F{点击}
+    F --> G[进入面试详情页]
+                </div>
+
+                <h4>规则说明</h4>
+                <ul>
+                    <li><strong>视觉设计</strong>：明显的按钮样式，白底+灰色边框，右侧显示 › 箭头</li>
+                    <li><strong>悬停反馈</strong>：背景变浅蓝+边框变蓝+阴影+整体右移2px+箭头前进4px</li>
+                    <li><strong>状态标识</strong>：✓绿色表示表现良好，!红色表示需改进</li>
+                    <li><strong>摘要信息</strong>：显示问题数、整体评价一句话摘要</li>
+                </ul>
+            </div>
+            <div class="prototype-section">
+                <div class="prototype-frame">
+                    <iframe
+                        src="../prototype/prototype_v1.0.html?focus=interview-item#company-detail"
+                        style="width: 700px; height: 400px; border: none;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- 6. Business Flowcharts -->
+<div class="section" id="flowcharts">
+    <h2>6. 业务流程图</h2>
+
+    <h3>6.1 核心用户操作流程</h3>
+    <div class="mermaid">
+flowchart TD
+    A[面试结束] --> B[打开Web端]
+    B --> C[点击上传面试录音]
+    C --> D[选择录音文件]
+    D --> E[填写面试信息]
+    E --> E1[公司名称]
+    E --> E2[岗位标签]
+    E --> E3[面试轮次]
+    E --> E4[面试日期]
+    E1 & E2 & E3 & E4 --> F{信息校验}
+    F -->|校验失败| G[提示必填项]
+    G --> E
+    F -->|校验通过| H[提交上传]
+    H --> I[显示处理中状态]
+    I --> J{处理完成?}
+    J -->|是| K[通知用户查看]
+    J -->|超时3h| L[通知异常并提供重试]
+    K --> M[查看面试纪要]
+    M --> N[逐条阅读问答评价]
+    N --> O[查看改进建议]
+    O --> P{累计面试>=2场?}
+    P -->|是| Q[查看规律分析]
+    P -->|否| R[等待下次面试]
+    </div>
+
+    <h3>6.2 录音处理流程</h3>
+    <div class="mermaid">
+flowchart TD
+    A[接收录音文件] --> B{格式校验}
+    B -->|不支持| C[返回错误提示]
+    B -->|通过| D{文件大小校验}
+    D -->|超过500MB| E[返回大小超限提示]
+    D -->|通过| F[上传至云端存储]
+    F --> G[调用ASR转录服务]
+    G --> H[说话人分离]
+    H --> I[角色识别: 面试官vs候选人]
+    I --> J[置信度评估]
+    J --> K{置信度>=0.7?}
+    K -->|是| L[标记为正常文本]
+    K -->|否| M[标记为低置信度⚠️]
+    L & M --> N[结构化问答切分]
+    N --> O[识别追问链路]
+    O --> P[AI分析: 考察意图]
+    P --> Q[AI分析: 回答质量评价]
+    Q --> R[AI生成: 改进建议示例]
+    R --> S[生成面试纪要]
+    S --> T[存储结果]
+    T --> U[通知用户]
+    </div>
+
+    <h3>6.3 多轮规律分析流程</h3>
+    <div class="mermaid">
+flowchart TD
+    A[新面试分析完成] --> B{用户累计面试数}
+    B -->|少于2场| C[不触发规律分析]
+    B -->|2场及以上| D[提取所有面试的评价标签]
+    D --> E[统计薄弱维度出现频次]
+    E --> F[识别共性弱点]
+    D --> G[统计考察意图出现频次]
+    G --> H[识别高频考点]
+    D --> I[按时间线排列同维度评价]
+    I --> J[计算改善趋势]
+    F & H & J --> K[生成规律分析报告]
+    K --> L[更新洞察面板]
+    L --> M{用户设置了筛选?}
+    M -->|按岗位| N[过滤展示对应岗位数据]
+    M -->|按公司| O[过滤展示对应公司数据]
+    M -->|无筛选| P[展示全量数据]
+    </div>
+
+    <h3>6.4 重复上传处理流程</h3>
+    <div class="mermaid">
+flowchart TD
+    A[用户提交上传] --> B{同公司同轮次已存在?}
+    B -->|否| C[正常上传处理]
+    B -->|是| D[弹出确认弹窗]
+    D --> E{用户选择}
+    E -->|覆盖| F[删除旧记录]
+    F --> G[使用新录音重新处理]
+    G --> H[更新规律分析]
+    E -->|取消| I[返回上传页]
+    </div>
+</div>
+
+<!-- 7. Exceptions -->
+<div class="section" id="exceptions">
+    <h2>7. 异常与边界</h2>
+    <table>
+        <tr><th>场景</th><th>处理策略</th></tr>
+        <tr><td>录音文件格式不支持</td><td>上传时校验，提示支持的格式列表</td></tr>
+        <tr><td>录音文件过大（>500MB）</td><td>上传时拦截，提示文件大小限制</td></tr>
+        <tr><td>录音内容过短（<1分钟）</td><td>允许上传但提示"录音较短，分析结果可能有限"</td></tr>
+        <tr><td>转录质量极差（>50%低置信度）</td><td>完成后提示"录音质量较差，建议检查关键内容"</td></tr>
+        <tr><td>无法区分说话人</td><td>回退为不分角色的纯文本转录，标记为"角色未识别"</td></tr>
+        <tr><td>处理超时（超过3小时未完成）</td><td>邮件通知用户处理异常，提供重试按钮</td></tr>
+        <tr><td>同公司同轮次重复上传</td><td>弹出确认弹窗，用户可选覆盖或取消</td></tr>
+        <tr><td>网络中断导致上传失败</td><td>支持断点续传；失败后保留草稿，提示重试</td></tr>
+    </table>
+</div>
+
+<!-- 8. Tracking -->
+<div class="section" id="tracking">
+    <h2>8. 数据埋点与分析</h2>
+    <table>
+        <tr><th>事件名称</th><th>触发时机</th><th>关键参数</th><th>分析目的</th></tr>
+        <tr><td>upload_start</td><td>用户点击开始分析</td><td>文件大小、格式、岗位标签</td><td>了解用户上传行为</td></tr>
+        <tr><td>upload_complete</td><td>上传成功</td><td>耗时</td><td>监控上传体验</td></tr>
+        <tr><td>analysis_complete</td><td>分析完成</td><td>处理时长、问答对数量</td><td>监控分析质量</td></tr>
+        <tr><td>view_summary</td><td>打开面试纪要</td><td>面试ID、来源入口</td><td>衡量核心功能使用</td></tr>
+        <tr><td>expand_suggestion</td><td>展开改善建议</td><td>问题序号</td><td>衡量建议价值</td></tr>
+        <tr><td>view_insights</td><td>打开规律分析页</td><td>已分析面试数</td><td>衡量高阶功能渗透</td></tr>
+        <tr><td>filter_change</td><td>切换岗位/公司筛选</td><td>筛选维度</td><td>了解用户组织习惯</td></tr>
+    </table>
+</div>
+
+<!-- 9. Roadmap -->
+<div class="section" id="roadmap">
+    <h2>9. 未来规划</h2>
+    <table>
+        <tr><th>阶段</th><th>功能</th><th>价值</th></tr>
+        <tr><td>v1.1</td><td>手机端适配（PWA或小程序）</td><td>降低上传门槛，支持面试后立即操作</td></tr>
+        <tr><td>v1.1</td><td>数据导出（PDF/Markdown）</td><td>满足用户离线复习需求</td></tr>
+        <tr><td>v1.2</td><td>模拟面试练习</td><td>基于弱点生成针对性练习题</td></tr>
+        <tr><td>v1.2</td><td>面试前智能提醒</td><td>下轮面试前推送上轮改善要点</td></tr>
+        <tr><td>v2.0</td><td>多人面试支持（Panel面试）</td><td>覆盖更多面试场景</td></tr>
+        <tr><td>v2.0</td><td>社区匿名分享</td><td>用户贡献面经，形成考点数据库</td></tr>
+    </table>
+</div>
+
+</div>
+
+<script>
+mermaid.initialize({ startOnLoad: true, theme: 'default' });
+</script>
+</body>
+</html>
+
+</div>
+
+<script>
+mermaid.initialize({ startOnLoad: true, theme: 'default' });
+</script>
+</body>
+</html>

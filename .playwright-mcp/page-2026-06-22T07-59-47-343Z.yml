@@ -1,0 +1,49 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]: 📊
+      - generic [ref=e6] [cursor=pointer]: 🏠
+      - generic [ref=e8] [cursor=pointer]: 📈
+      - generic [ref=e10] [cursor=pointer]: ⚙️
+    - main [ref=e11]:
+      - generic [ref=e12]:
+        - generic [ref=e13]:
+          - heading "我的面试" [level=1] [ref=e14]
+          - button "➕ 上传面试录音" [active] [ref=e15] [cursor=pointer]
+        - generic [ref=e19] [cursor=pointer]: 全部
+        - generic [ref=e20]:
+          - generic [ref=e21]: 📝
+          - paragraph [ref=e22]: 暂无面试记录
+          - button "上传第一场面试" [ref=e23] [cursor=pointer]
+  - generic [ref=e25]:
+    - heading "上传面试录音" [level=2] [ref=e26]
+    - generic [ref=e27]:
+      - generic [ref=e28] [cursor=pointer]: 上传录音
+      - generic [ref=e29] [cursor=pointer]: 粘贴转写文本
+    - generic [ref=e31] [cursor=pointer]:
+      - generic [ref=e32]: 📁
+      - generic [ref=e33]: 点击选择或拖拽文件到此处
+      - generic [ref=e34]: 支持 m4a, mp3, wav 格式，最大500MB
+    - generic [ref=e35]:
+      - generic [ref=e36]: 公司名称 *
+      - 'combobox "如: 字节跳动" [ref=e37]'
+    - generic [ref=e38]:
+      - generic [ref=e39]: 岗位方向 *
+      - 'combobox "如: 后端" [ref=e40]'
+    - generic [ref=e41]:
+      - generic [ref=e42]: 面试轮次
+      - combobox [ref=e43]:
+        - option "一面" [selected]
+        - option "二面"
+        - option "三面"
+        - option "HR面"
+        - option "终面"
+    - generic [ref=e44]:
+      - generic [ref=e45]: 面试日期
+      - textbox [ref=e46]: 2026-06-22
+    - generic [ref=e47]:
+      - generic [ref=e48]: 职位描述 (JD，可选)
+      - textbox "粘贴岗位JD，AI分析时会作为背景参考" [ref=e49]
+    - generic [ref=e50]:
+      - button "开始分析" [ref=e51] [cursor=pointer]
+      - button "取消" [ref=e52] [cursor=pointer]

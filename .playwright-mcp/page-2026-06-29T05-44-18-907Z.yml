@@ -1,0 +1,581 @@
+- generic [ref=e2]:
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - text: 📊
+      - generic [ref=e94]: 面试复盘
+    - generic [ref=e5] [cursor=pointer]:
+      - generic [ref=e6]: 🏠
+      - generic [ref=e95]: 我的面试
+    - generic [ref=e7] [cursor=pointer]:
+      - generic [ref=e8]: 📈
+      - generic [ref=e96]: 规律分析
+    - generic [ref=e9] [cursor=pointer]:
+      - generic [ref=e10]: ⚙️
+      - generic [ref=e97]: 设置
+    - generic [ref=e98]:
+      - generic [ref=e99]: 目录
+      - generic [ref=e100]: 京东物流 › AI产品 › 一面
+      - generic [ref=e101]:
+        - generic [ref=e908] [cursor=pointer]: "#1"
+        - generic [ref=e910] [cursor=pointer]: "#2"
+        - generic [ref=e912] [cursor=pointer]: "#3"
+        - generic [ref=e914] [cursor=pointer]: "#4"
+        - generic [ref=e916] [cursor=pointer]: "#5"
+        - generic [ref=e918] [cursor=pointer]: "#6"
+        - generic [ref=e920] [cursor=pointer]: "#7"
+        - generic [ref=e922] [cursor=pointer]: "#8"
+        - generic [ref=e924] [cursor=pointer]: "#9"
+        - generic [ref=e926] [cursor=pointer]: "#10"
+        - generic [ref=e928] [cursor=pointer]: "#11"
+        - generic [ref=e930] [cursor=pointer]: "#12"
+        - generic [ref=e932] [cursor=pointer]: "#13"
+        - generic [ref=e934] [cursor=pointer]: "#14"
+        - generic [ref=e936] [cursor=pointer]: "#15"
+        - generic [ref=e938] [cursor=pointer]: "#16"
+        - generic [ref=e940] [cursor=pointer]: "#17"
+        - generic [ref=e942] [cursor=pointer]: "#18"
+        - generic [ref=e944] [cursor=pointer]: "#19"
+        - generic [ref=e946] [cursor=pointer]: "#20"
+        - generic [ref=e948] [cursor=pointer]: "#21"
+        - generic [ref=e950] [cursor=pointer]: "#22"
+        - generic [ref=e952] [cursor=pointer]: "#23"
+        - generic [ref=e954] [cursor=pointer]: "#24"
+        - generic [ref=e956] [cursor=pointer]: "#25"
+  - main [ref=e11]:
+    - generic [ref=e154]:
+      - button "← 返回" [ref=e155] [cursor=pointer]
+      - generic [ref=e957]:
+        - generic [ref=e958]:
+          - heading "京东物流 - 一面" [level=2] [ref=e959]
+          - generic [ref=e960]:
+            - generic [ref=e961]: 📅 2026-06-10
+            - generic [ref=e962]: ⏱️ ?分钟
+            - generic [ref=e963]: ❓ 25个问题
+            - generic [ref=e964]: 🏷️ AI产品
+        - button "筛选问题" [ref=e965] [cursor=pointer]
+      - generic [ref=e166]:
+        - generic [ref=e966]:
+          - generic [ref=e967]:
+            - button "✏️" [ref=e968] [cursor=pointer]
+            - button "🗑️" [ref=e969] [cursor=pointer]
+          - generic [ref=e970]:
+            - generic [ref=e971]: "问题 #1"
+            - generic [ref=e973]: "考察: 待分析"
+          - generic [ref=e974]: 你的回答
+          - generic [ref=e975]: 最快是一周之内，然后每周的话可以出勤5天。 您好。可以听到吗？好像。
+          - generic [ref=e976]:
+            - generic [ref=e977]:
+              - generic [ref=e978]: ✓ 答得好的部分
+              - generic [ref=e979]: 待AI分析
+            - generic [ref=e980]:
+              - generic [ref=e981]: ✗ 需要改进
+              - generic [ref=e982]: 待AI分析
+          - generic [ref=e983]:
+            - generic [ref=e984] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e985]:
+              - strong [ref=e986]: 优化后的回答示例：
+              - paragraph [ref=e987]: 请配置AI服务以获取改进建议
+        - generic [ref=e988]:
+          - generic [ref=e989]:
+            - button "✏️" [ref=e990] [cursor=pointer]
+            - button "🗑️" [ref=e991] [cursor=pointer]
+          - generic [ref=e992]:
+            - generic [ref=e993]: "问题 #2"
+            - generic [ref=e995]: "考察: 待分析"
+          - generic [ref=e996]: 你的回答
+          - generic [ref=e997]: 准备实习五六个月。
+          - generic [ref=e998]:
+            - generic [ref=e999]:
+              - generic [ref=e1000]: ✓ 答得好的部分
+              - generic [ref=e1001]: 待AI分析
+            - generic [ref=e1002]:
+              - generic [ref=e1003]: ✗ 需要改进
+              - generic [ref=e1004]: 待AI分析
+          - generic [ref=e1005]:
+            - generic [ref=e1006] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1007]:
+              - strong [ref=e1008]: 优化后的回答示例：
+              - paragraph [ref=e1009]: 请配置AI服务以获取改进建议
+        - generic [ref=e1010]:
+          - generic [ref=e1011]:
+            - button "✏️" [ref=e1012] [cursor=pointer]
+            - button "🗑️" [ref=e1013] [cursor=pointer]
+          - generic [ref=e1014]:
+            - generic [ref=e1015]: "问题 #3"
+            - generic [ref=e1017]: "考察: 待分析"
+          - generic [ref=e1018]: 你的回答
+          - generic [ref=e1019]: 对是的。 说话人3 是吧？
+          - generic [ref=e1020]:
+            - generic [ref=e1021]:
+              - generic [ref=e1022]: ✓ 答得好的部分
+              - generic [ref=e1023]: 待AI分析
+            - generic [ref=e1024]:
+              - generic [ref=e1025]: ✗ 需要改进
+              - generic [ref=e1026]: 待AI分析
+          - generic [ref=e1027]:
+            - generic [ref=e1028] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1029]:
+              - strong [ref=e1030]: 优化后的回答示例：
+              - paragraph [ref=e1031]: 请配置AI服务以获取改进建议
+        - generic [ref=e1032]:
+          - generic [ref=e1033]:
+            - button "✏️" [ref=e1034] [cursor=pointer]
+            - button "🗑️" [ref=e1035] [cursor=pointer]
+          - generic [ref=e1036]:
+            - generic [ref=e1037]: "问题 #4"
+            - generic [ref=e1039]: "考察: 待分析"
+          - generic [ref=e1040]: 你的回答
+          - generic [ref=e1041]: 您好，刚才又卡了一下，
+          - generic [ref=e1042]:
+            - generic [ref=e1043]:
+              - generic [ref=e1044]: ✓ 答得好的部分
+              - generic [ref=e1045]: 待AI分析
+            - generic [ref=e1046]:
+              - generic [ref=e1047]: ✗ 需要改进
+              - generic [ref=e1048]: 待AI分析
+          - generic [ref=e1049]:
+            - generic [ref=e1050] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1051]:
+              - strong [ref=e1052]: 优化后的回答示例：
+              - paragraph [ref=e1053]: 请配置AI服务以获取改进建议
+        - generic [ref=e1054]:
+          - generic [ref=e1055]:
+            - button "✏️" [ref=e1056] [cursor=pointer]
+            - button "🗑️" [ref=e1057] [cursor=pointer]
+          - generic [ref=e1058]:
+            - generic [ref=e1059]: "问题 #5"
+            - generic [ref=e1061]: "考察: 待分析"
+          - generic [ref=e1062]: 你的回答
+          - generic [ref=e1063]: 现在可以。
+          - generic [ref=e1064]:
+            - generic [ref=e1065]:
+              - generic [ref=e1066]: ✓ 答得好的部分
+              - generic [ref=e1067]: 待AI分析
+            - generic [ref=e1068]:
+              - generic [ref=e1069]: ✗ 需要改进
+              - generic [ref=e1070]: 待AI分析
+          - generic [ref=e1071]:
+            - generic [ref=e1072] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1073]:
+              - strong [ref=e1074]: 优化后的回答示例：
+              - paragraph [ref=e1075]: 请配置AI服务以获取改进建议
+        - generic [ref=e1076]:
+          - generic [ref=e1077]:
+            - button "✏️" [ref=e1078] [cursor=pointer]
+            - button "🗑️" [ref=e1079] [cursor=pointer]
+          - generic [ref=e1080]:
+            - generic [ref=e1081]: "问题 #6"
+            - generic [ref=e1083]: "考察: 待分析"
+          - generic [ref=e1084]: 你的回答
+          - generic [ref=e1085]: 明白。
+          - generic [ref=e1086]:
+            - generic [ref=e1087]:
+              - generic [ref=e1088]: ✓ 答得好的部分
+              - generic [ref=e1089]: 待AI分析
+            - generic [ref=e1090]:
+              - generic [ref=e1091]: ✗ 需要改进
+              - generic [ref=e1092]: 待AI分析
+          - generic [ref=e1093]:
+            - generic [ref=e1094] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1095]:
+              - strong [ref=e1096]: 优化后的回答示例：
+              - paragraph [ref=e1097]: 请配置AI服务以获取改进建议
+        - generic [ref=e1098]:
+          - generic [ref=e1099]:
+            - button "✏️" [ref=e1100] [cursor=pointer]
+            - button "🗑️" [ref=e1101] [cursor=pointer]
+          - generic [ref=e1102]:
+            - generic [ref=e1103]: "问题 #7"
+            - generic [ref=e1105]: "考察: 待分析"
+          - generic [ref=e1106]: 你的回答
+          - generic [ref=e1107]: 好勒。 面试官您好，我叫董欣，然后本科就读于中国人民大学，硕士就读于北京师范大学，是27届毕业的硕士生，然后此前主要是有4段实习，第一段是在boss直聘做的行业和产品研究，然后这段时期主要是根据业务的目标，对指定的行业和职位进行针对性的知识库的扩充，赠品分析以及一些APP端的优化。 然后第二段是在国务院发展研究中心的大数据研究院做的产品经理，然后这一段产品是一个to g的大数据平台，一个可视化的平台，然后一方面是在已有的平台场景上会进行一些增添修改功能上的改动等等，另一方面是会参与到新的场景的一些规划构建。 第三段实习是在美团做的数据运营，然后平常工作一方面是数据方面的一些工作，比如说日常的一些日日复盘周复盘以及数据看板的一个搭建，然后另一方面也会对接一些组内的需求，去优化一些一线人员他们使用的一些系统，然后最近一段实习是在科大讯飞做的一些产品，然后这个产品是一个是一个医疗场景下的多模态的智能体系统，然后我主要做的工作就是这个产品目前是在从0~1的阶段，然后主要工作一方面是参与到这个产品的构建迭代，然后另一方面也会去合作的医院去那边去去做运营，然后推动那边的常态化运营，然后促进促使促进他们去使用系统。 然后回公司之后可以利用医院那边的运营数据去进一步的去对这个系统进行进一步的去优化，提升产品效果。 然后此外也会做一些用AI一些提效的事情，比如说在云数据分析的过程中去搭建工作流，然后也有为业务线去设计一个原产品产品文档转圆形的一个skew去提升整个业务工作效率等等。然后因为我本身对于AI和产品都比较感兴趣，所以说现在就正在寻找一个AI产品方向的岗位，谢谢。
+          - generic [ref=e1108]:
+            - generic [ref=e1109]:
+              - generic [ref=e1110]: ✓ 答得好的部分
+              - generic [ref=e1111]: 待AI分析
+            - generic [ref=e1112]:
+              - generic [ref=e1113]: ✗ 需要改进
+              - generic [ref=e1114]: 待AI分析
+          - generic [ref=e1115]:
+            - generic [ref=e1116] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1117]:
+              - strong [ref=e1118]: 优化后的回答示例：
+              - paragraph [ref=e1119]: 请配置AI服务以获取改进建议
+        - generic [ref=e1120]:
+          - generic [ref=e1121]:
+            - button "✏️" [ref=e1122] [cursor=pointer]
+            - button "🗑️" [ref=e1123] [cursor=pointer]
+          - generic [ref=e1124]:
+            - generic [ref=e1125]: "问题 #8"
+            - generic [ref=e1127]: "考察: 待分析"
+          - generic [ref=e1128]: 你的回答
+          - generic [ref=e1129]: 对，因为基本上就是日常实习，日常实习大概就是三四个月的周期，
+          - generic [ref=e1130]:
+            - generic [ref=e1131]:
+              - generic [ref=e1132]: ✓ 答得好的部分
+              - generic [ref=e1133]: 待AI分析
+            - generic [ref=e1134]:
+              - generic [ref=e1135]: ✗ 需要改进
+              - generic [ref=e1136]: 待AI分析
+          - generic [ref=e1137]:
+            - generic [ref=e1138] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1139]:
+              - strong [ref=e1140]: 优化后的回答示例：
+              - paragraph [ref=e1141]: 请配置AI服务以获取改进建议
+        - generic [ref=e1142]:
+          - generic [ref=e1143]:
+            - button "✏️" [ref=e1144] [cursor=pointer]
+            - button "🗑️" [ref=e1145] [cursor=pointer]
+          - generic [ref=e1146]:
+            - generic [ref=e1147]: "问题 #9"
+            - generic [ref=e1149]: "考察: 待分析"
+          - generic [ref=e1150]: 你的回答
+          - generic [ref=e1151]: 因为我现在是在找转正的实习，所以我会尽可能时间长一点，然后去寻找一个转正的机会，然后尽可能的时间实习时间长。
+          - generic [ref=e1152]:
+            - generic [ref=e1153]:
+              - generic [ref=e1154]: ✓ 答得好的部分
+              - generic [ref=e1155]: 待AI分析
+            - generic [ref=e1156]:
+              - generic [ref=e1157]: ✗ 需要改进
+              - generic [ref=e1158]: 待AI分析
+          - generic [ref=e1159]:
+            - generic [ref=e1160] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1161]:
+              - strong [ref=e1162]: 优化后的回答示例：
+              - paragraph [ref=e1163]: 请配置AI服务以获取改进建议
+        - generic [ref=e1164]:
+          - generic [ref=e1165]:
+            - button "✏️" [ref=e1166] [cursor=pointer]
+            - button "🗑️" [ref=e1167] [cursor=pointer]
+          - generic [ref=e1168]:
+            - generic [ref=e1169]: "问题 #10"
+            - generic [ref=e1171]: "考察: 待分析"
+          - generic [ref=e1172]: 你的回答
+          - generic [ref=e1173]: 现在是在职，然后是跟蒙特尔商量好了，然后一周之内就可以离职。
+          - generic [ref=e1174]:
+            - generic [ref=e1175]:
+              - generic [ref=e1176]: ✓ 答得好的部分
+              - generic [ref=e1177]: 待AI分析
+            - generic [ref=e1178]:
+              - generic [ref=e1179]: ✗ 需要改进
+              - generic [ref=e1180]: 待AI分析
+          - generic [ref=e1181]:
+            - generic [ref=e1182] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1183]:
+              - strong [ref=e1184]: 优化后的回答示例：
+              - paragraph [ref=e1185]: 请配置AI服务以获取改进建议
+        - generic [ref=e1186]:
+          - generic [ref=e1187]:
+            - button "✏️" [ref=e1188] [cursor=pointer]
+            - button "🗑️" [ref=e1189] [cursor=pointer]
+          - generic [ref=e1190]:
+            - generic [ref=e1191]: "问题 #11"
+            - generic [ref=e1193]: "考察: 待分析"
+          - generic [ref=e1194]: 你的回答
+          - generic [ref=e1195]: 然后我做的产品它是一个在医生做检查的场景下使用的智能助理，相当于是之前的时候医生做检查的时候，会有一个医生去做检查，另一个医生在旁边用电脑去录入，或者说有的时候他医生资源比较紧张，他会只有一个医生边做检查边录入，然后他的工作压力就比较大。 而智能助理一方面他会接受医生的语音输入，然后另一方面他会接受检查的影像的输入，通过语音和影像最后检查结束之后，生成一个规范的医院的检查报告，去帮助医生去检验他们的一个工作压力。 然后我主要就是参与到这个产品的目前是从0~1的构建的阶段，然后现在还是在不断的去优化和迭代这个产品的效果。
+          - generic [ref=e1196]:
+            - generic [ref=e1197]:
+              - generic [ref=e1198]: ✓ 答得好的部分
+              - generic [ref=e1199]: 待AI分析
+            - generic [ref=e1200]:
+              - generic [ref=e1201]: ✗ 需要改进
+              - generic [ref=e1202]: 待AI分析
+          - generic [ref=e1203]:
+            - generic [ref=e1204] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1205]:
+              - strong [ref=e1206]: 优化后的回答示例：
+              - paragraph [ref=e1207]: 请配置AI服务以获取改进建议
+        - generic [ref=e1208]:
+          - generic [ref=e1209]:
+            - button "✏️" [ref=e1210] [cursor=pointer]
+            - button "🗑️" [ref=e1211] [cursor=pointer]
+          - generic [ref=e1212]:
+            - generic [ref=e1213]: "问题 #12"
+            - generic [ref=e1215]: "考察: 待分析"
+          - generic [ref=e1216]: 你的回答
+          - generic [ref=e1217]: 这个在落地使用，但是还没有正式的去商业化，因为我们现在相当于在和合作的医院一起去开发，然后合作的一边那边他们在每天会在用这个系统，然后我们通过他们那边使用的数据会进一步反过来再去提升系统的效果。
+          - generic [ref=e1218]:
+            - generic [ref=e1219]:
+              - generic [ref=e1220]: ✓ 答得好的部分
+              - generic [ref=e1221]: 待AI分析
+            - generic [ref=e1222]:
+              - generic [ref=e1223]: ✗ 需要改进
+              - generic [ref=e1224]: 待AI分析
+          - generic [ref=e1225]:
+            - generic [ref=e1226] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1227]:
+              - strong [ref=e1228]: 优化后的回答示例：
+              - paragraph [ref=e1229]: 请配置AI服务以获取改进建议
+        - generic [ref=e1230]:
+          - generic [ref=e1231]:
+            - button "✏️" [ref=e1232] [cursor=pointer]
+            - button "🗑️" [ref=e1233] [cursor=pointer]
+          - generic [ref=e1234]:
+            - generic [ref=e1235]: "问题 #13"
+            - generic [ref=e1237]: "考察: 待分析"
+          - generic [ref=e1238]: 你的回答
+          - generic [ref=e1239]: 我是有一个产品的门槛，然后带着我，然后还有一个是相当于整个产品的一个项目经理也会带我，然后其他的就是一些还有前端后端还有算法他们那边。
+          - generic [ref=e1240]:
+            - generic [ref=e1241]:
+              - generic [ref=e1242]: ✓ 答得好的部分
+              - generic [ref=e1243]: 待AI分析
+            - generic [ref=e1244]:
+              - generic [ref=e1245]: ✗ 需要改进
+              - generic [ref=e1246]: 待AI分析
+          - generic [ref=e1247]:
+            - generic [ref=e1248] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1249]:
+              - strong [ref=e1250]: 优化后的回答示例：
+              - paragraph [ref=e1251]: 请配置AI服务以获取改进建议
+        - generic [ref=e1252]:
+          - generic [ref=e1253]:
+            - button "✏️" [ref=e1254] [cursor=pointer]
+            - button "🗑️" [ref=e1255] [cursor=pointer]
+          - generic [ref=e1256]:
+            - generic [ref=e1257]: "问题 #14"
+            - generic [ref=e1259]: "考察: 待分析"
+          - generic [ref=e1260]: 你的回答
+          - generic [ref=e1261]: 我写的一有一个是因为这个系统它会面对不同的使用者，首先是主要是检查的医生他会使用这个系统，然后另一方面是临床的医生也会使用去看报告。 然后还有一个方面是管理者管理员的角色，然后我有一个PAD是关于管理员的运营管理的需求的一个设计，它运营管理的界面是相当于对于管理员，还是说它需要去实时的去了解当前这个系统在医院内的一个使用的情况，比如说使用这个系统的医生，还有诊室，还有报告的生成的数量，或者一些阴性阳性的一个比例等等之类的。 然后可能有点类似于一个运营数据的概览，相当于是给医院那边或者给我们这边去医院那边的管理者，或者给我这边去看的运营管理的界面。 然后我当时在做这个场景主要是管理者的使用，然后所以说需要去考虑到管理者他需要准确了解的一些相关的信息，需要展示出来的一些相关信息，比如说包括了运营的一些客观上的一个数量的一些信息，然后还有系统的部署的一个情况，比如说整个医院内部它的哪些诊室已经哪些部署正在使用这个系统，以及这些诊室他们的一个使用的情况，因为医院那边他们也会去也会需要去监督，或者说也需要去跟踪了解每个医生他们的一个什么情况。 然后还有一个方面是每天的使用的一个趋势，然后都需要展现在运营管理的界面。 然后当时主要是基于这几点的一个需求出发，去设计这样的一个页面的原型，然后还有不同的不同的一个数据的大概的概览的情况以及展示的效果等等去分把这个页面基本上去设计完善出来，然后再交给后端后端那边，然后把这个页面开发出来。
+          - generic [ref=e1262]:
+            - generic [ref=e1263]:
+              - generic [ref=e1264]: ✓ 答得好的部分
+              - generic [ref=e1265]: 待AI分析
+            - generic [ref=e1266]:
+              - generic [ref=e1267]: ✗ 需要改进
+              - generic [ref=e1268]: 待AI分析
+          - generic [ref=e1269]:
+            - generic [ref=e1270] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1271]:
+              - strong [ref=e1272]: 优化后的回答示例：
+              - paragraph [ref=e1273]: 请配置AI服务以获取改进建议
+        - generic [ref=e1274]:
+          - generic [ref=e1275]:
+            - button "✏️" [ref=e1276] [cursor=pointer]
+            - button "🗑️" [ref=e1277] [cursor=pointer]
+          - generic [ref=e1278]:
+            - generic [ref=e1279]: "问题 #15"
+            - generic [ref=e1281]: "考察: 待分析"
+          - generic [ref=e1282]: 你的回答
+          - generic [ref=e1283]: 核心的衡量指标是它的准就是它产出来的那一份系统的报系统产出来那份报告的准确率和召回率。
+          - generic [ref=e1284]:
+            - generic [ref=e1285]:
+              - generic [ref=e1286]: ✓ 答得好的部分
+              - generic [ref=e1287]: 待AI分析
+            - generic [ref=e1288]:
+              - generic [ref=e1289]: ✗ 需要改进
+              - generic [ref=e1290]: 待AI分析
+          - generic [ref=e1291]:
+            - generic [ref=e1292] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1293]:
+              - strong [ref=e1294]: 优化后的回答示例：
+              - paragraph [ref=e1295]: 请配置AI服务以获取改进建议
+        - generic [ref=e1296]:
+          - generic [ref=e1297]:
+            - button "✏️" [ref=e1298] [cursor=pointer]
+            - button "🗑️" [ref=e1299] [cursor=pointer]
+          - generic [ref=e1300]:
+            - generic [ref=e1301]: "问题 #16"
+            - generic [ref=e1303]: "考察: 待分析"
+          - generic [ref=e1304]: 你的回答
+          - generic [ref=e1305]: 准确率系统产出来的正确的测量项除以系统产出来的所有的测量项，召回率是系统产出来的，测量项除了所有的测量项除以就是本应该能够产出来的所有的测量项目。 然后我们现在模型优化的方向就是为了去相当于是为了努力让这个模型它产出来的报告能够更精准更准确，然后他上屏的数量更多，然后更符合一份正确或者接近完美的一份报告。
+          - generic [ref=e1306]:
+            - generic [ref=e1307]:
+              - generic [ref=e1308]: ✓ 答得好的部分
+              - generic [ref=e1309]: 待AI分析
+            - generic [ref=e1310]:
+              - generic [ref=e1311]: ✗ 需要改进
+              - generic [ref=e1312]: 待AI分析
+          - generic [ref=e1313]:
+            - generic [ref=e1314] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1315]:
+              - strong [ref=e1316]: 优化后的回答示例：
+              - paragraph [ref=e1317]: 请配置AI服务以获取改进建议
+        - generic [ref=e1318]:
+          - generic [ref=e1319]:
+            - button "✏️" [ref=e1320] [cursor=pointer]
+            - button "🗑️" [ref=e1321] [cursor=pointer]
+          - generic [ref=e1322]:
+            - generic [ref=e1323]: "问题 #17"
+            - generic [ref=e1325]: "考察: 待分析"
+          - generic [ref=e1326]: 你的回答
+          - generic [ref=e1327]: 然后作为产品经理首先需要去了解这个模型它系统它工作的过程之中，因为它作为一个动态的产品，目前来说它主要的输输入是医生去口述，然后口述之后语音转写您转写出文本，然后文本再输入给大模型，然后大模型再输出给输出出来结果。 然后这里面主要是会有三个点会导致这个结果会出现问题，一方面他用户本身他会有一些习惯上的问题，比如说他如果就是因为语音输入，它会需要识别到测量项它到底是哪一个测量项，他如果不说名字，然后只说数字的话，最后的结果会比较混乱。 然后另一方面是这个语音转写，就是用户说出来了，但是语音转写的文字会有错别字或者说没转写出来，这个是语音转写的问题。 然后再一个方面是模型的问题，模型的问题就是它转写的程功了，但是模型接受这个转写文本之后输出来的结果是错的，然后我们主要是需要把运营数据去做一个分析，把每一份系统出来的报告和医院那边会提供一份正确的最后提供给病人的给提供给患者的一份正确的报告作为对比，然后去提取出每一份报告的差异点以及差异点的原因，然后这个原因就是一个问题的分类，就像就分到我刚才所说的三类用户，转写还有模型的问题，然后每一类问题都会交由专门负责的这一个算法的同事他们去解决。 然后因为我刚开始是因为这个数据其实是非常大的，可能他们一个月会有一两千份的数据去去作为参考去做一个数据集去优化。 所以我刚开始主要是自己去标注一个大概几十份数据，然后给一个操作的规范，然后交给外包，因为我们会找一些外包的他们的一些医生之类的比较专业人员，然后他们拿去对这个数据集进行标注，然后再把它们标注出来的结果反馈给算法那边，然后我主要在主要是通过标注之后建立一个标注的操作规范，然后以及提高效率的方式，我当时觉得自己人工的去对比去提取每一个差异点会比较的效率比较低下，所以我就利用卡扣的 Ai工具去做了一个然后工作流里面会有一些脚本，他会去一一些脚本，还有一些它识别的规则，然后他会去主动的去扒取那个系统我们自己的系统出来的一个报告和医院那边提供的报告，然后再进行对比，然后把每一份报告的一些问题的问题去列出来，每个部分每份报告哪些地方出问题去列出来，然后刚开始我们最理想的情况是他能够自主的基本上把问题能列得很全，然后这样就像整个标注员那边他们所做的工作比较少了，但是最后我们做实验，然后人机的一致率就机器出的准确，就跟人出的一致率，它如果说让他把问题列出来的话，它一致率可能只有50%左右，但是如果让他把有问题的项列出来，然后再交给标注员那边去识别问题，差准确率，它基本上能够达到90%多或者接近百%。 所以后面我们用工作流，然后把这个问题项列出来，然后再交给标注员，标注员那边然后再去做这个问题的分类，之前已经分好的那几种类，然后几类这边下面还会有一些更细的小类，然后他们把分类之好，分类好之后再交给算法，然后进一步的从这三个方向去优化，然后用户习惯的话会去引导用户做一些习惯上做一些系统时候的习惯上的调整，然后语音转写的话就是交给语音那边，然后这个模型的效果的话交给负责模型的算法那边。 以上基本上是优化产品的整个工作的流程。
+          - generic [ref=e1328]:
+            - generic [ref=e1329]:
+              - generic [ref=e1330]: ✓ 答得好的部分
+              - generic [ref=e1331]: 待AI分析
+            - generic [ref=e1332]:
+              - generic [ref=e1333]: ✗ 需要改进
+              - generic [ref=e1334]: 待AI分析
+          - generic [ref=e1335]:
+            - generic [ref=e1336] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1337]:
+              - strong [ref=e1338]: 优化后的回答示例：
+              - paragraph [ref=e1339]: 请配置AI服务以获取改进建议
+        - generic [ref=e1340]:
+          - generic [ref=e1341]:
+            - button "✏️" [ref=e1342] [cursor=pointer]
+            - button "🗑️" [ref=e1343] [cursor=pointer]
+          - generic [ref=e1344]:
+            - generic [ref=e1345]: "问题 #18"
+            - generic [ref=e1347]: "考察: 待分析"
+          - generic [ref=e1348]: 你的回答
+          - generic [ref=e1349]: 最大的困难或者卡点，我觉得其实也主要是做科大讯飞的产品的过程之中，因为因为之前我对于医疗这方面的了解，其实还一般对这个产品本身是比较陌生的，然后此外而且也没有在这个产品一线去推广去运营产品的经历。 所以当时去医院的时候比较，而且当时因为带我的产品的man，他自己因为身体受伤了，所以就没有跟我一起来，是应该他带着我一起去的，然后我自己后来变成我自己一个人去医院，然后去做这个产品的推广，然后去解决医生的一些问题，然后收集医生的反馈，在诊室里边和医生一起去去使用这个系统，然后有时候也会遇到医生，有些医生他可能会跟医生打交道的过程之中，也会遇到一些比如说不太配合，或者说比较或者说一些系统可能会突然产生一些很多故障之类的这种问题，然后这个是我之前没有在实地上去经历的一些挑战或者困难，因为之前的产品可能更多在线上，然后跟自己公司的一些比较熟悉的同事打交道，然后跟他们去探讨产品的优化，然后这个是在一线去做一些运营，然后跟不太陌生的就不太熟悉的医生，然后在自己不太熟悉的领域去做一些交流，做一些探讨，然后然后我当时主要是一方面就为了克服这个问题，一方面我自己会去主动的去。 尽可能就去了解这个系统它在使用过程之中，它本身可能会遇到哪些问题，或者使用的过程中，我自己会去把自己当成一个医生去多去使用几次这个系统，然后熟悉整个系统一个系统使用的操作的流程，然后它可能会出现的问题会出现在什么地方，另一方面也会刚开始我去的时候，我会先去医生的诊室里面去观察它的整个的检查的流程，去了解医生在做检查的时候，他是应该是一个怎么样的操作，怎么样的一个流程，然后这个检查是什么怎么样进行的。 然后另一方面呢也是跟医生打交道的时候也是多去帮助医生去减轻，因为他们本质上帮我们相当于是在帮助我们一起去开发，一起去测试这个系统，然后我会尽可能去帮助他们去减轻一些他们工作负担，比如说帮他们去喊病人递交报告，或者有时候会帮他去打一些报告等等，然后帮助我去消除和医生之间的这种隔阂，然后我觉得这个经历还有运营的从很陌生，然后完全陌生完全不了解，然后到一个渐渐熟悉，然后渐渐比较得心应手的一个过程，是之前没有遇到过的一个困难，然后也是一个非常珍贵的一份经历。
+          - generic [ref=e1350]:
+            - generic [ref=e1351]:
+              - generic [ref=e1352]: ✓ 答得好的部分
+              - generic [ref=e1353]: 待AI分析
+            - generic [ref=e1354]:
+              - generic [ref=e1355]: ✗ 需要改进
+              - generic [ref=e1356]: 待AI分析
+          - generic [ref=e1357]:
+            - generic [ref=e1358] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1359]:
+              - strong [ref=e1360]: 优化后的回答示例：
+              - paragraph [ref=e1361]: 请配置AI服务以获取改进建议
+        - generic [ref=e1362]:
+          - generic [ref=e1363]:
+            - button "✏️" [ref=e1364] [cursor=pointer]
+            - button "🗑️" [ref=e1365] [cursor=pointer]
+          - generic [ref=e1366]:
+            - generic [ref=e1367]: "问题 #19"
+            - generic [ref=e1369]: "考察: 待分析"
+          - generic [ref=e1370]: 你的回答
+          - generic [ref=e1371]: 我个人觉得还是比较ok的，因为确实是他们去一线去真正的去了解他们使用者的一些情况，能够更好的去在帮助我们去优化这个产品，然后确实也能够在一线能够收获了很多在公司里面的时候获取不到的一些信息或者一些体验，确实还是挺重要的，挺有意义的。
+          - generic [ref=e1372]:
+            - generic [ref=e1373]:
+              - generic [ref=e1374]: ✓ 答得好的部分
+              - generic [ref=e1375]: 待AI分析
+            - generic [ref=e1376]:
+              - generic [ref=e1377]: ✗ 需要改进
+              - generic [ref=e1378]: 待AI分析
+          - generic [ref=e1379]:
+            - generic [ref=e1380] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1381]:
+              - strong [ref=e1382]: 优化后的回答示例：
+              - paragraph [ref=e1383]: 请配置AI服务以获取改进建议
+        - generic [ref=e1384]:
+          - generic [ref=e1385]:
+            - button "✏️" [ref=e1386] [cursor=pointer]
+            - button "🗑️" [ref=e1387] [cursor=pointer]
+          - generic [ref=e1388]:
+            - generic [ref=e1389]: "问题 #20"
+            - generic [ref=e1391]: "考察: 待分析"
+          - generic [ref=e1392]: 你的回答
+          - generic [ref=e1393]: 在最早的时候刚开始是那种chat模式的 chat Bot之类的那种模式的网页上的一些产品，然后当时主要是用来比如说之前在美团的时候，或者说自己学习的时候会用来帮助我，比如说写一些代码或者审查代码修改代码之类的，然后或者比如说帮助我阅读文献之类的，然后在讯飞之后就是对AI工具，就是我现在用的是QQ的，马上对 AI工具用的比较熟练，然后工作之中一方面我去利用克拉克的去做一些就让他自己去做脚本，然后设计工作流给他定义一个定义它的一些规则，MB就让它自动去执行，然后另一方面我也去参与做从需求文档转圆形的快速转圆形的一个school的设计去供，就不仅是自己这个组去使用，然后另一方面我自己生活的时候也会去利用 AI工具去解决我的一些问题，比如说我让 AI工具帮助我去快速的去在知网上去下载我所需要的文献，然后下载到本地之后，它去自动去进行文献的一个通读，然后把文献的一些关键的点自动的输出出来，然后输出来之后我自己只要去浏览文献，它每个文件的点是什么样子，然后我就知道我哪一篇文献需要去精读，然后另一方面也基于我自己个人的一些需求，去利用 AI工具一些做了两个小工具上，一个工具是面试的一个复盘，基于我面试中记录一些问题或者回答，他会去帮我去进行识别一些优化的点，或者说有没有一些通用的规律会帮助我去提高。 然后另一个是帮助我去修改简历的小工具，之前修改简历的时候，我是在 word或者说PPT里面去修改，其实是比较麻烦的，因为它会涉及到你改一个地方的话，比如说多了一行少了一行，就后面的话可能都排版都要变，然后就比较麻烦，所以我就是这个月我用了一个自己设计的简历修改工具，它是一个模块化的，就是你改一个模块之后，它后面模块会自动的会随着它变，然后也会接入一些别的AI的API，然后去帮助我在写简历的过程中去修改一些措辞之类的。 不然后也有一些我自己也增添了一些别的，比如说快速的去导入一份简历，或者说自己把自己的工作经历输出去，然后他快速的去生成一个看起来比较规范的一个简历的格式等等的这样一个功能，然后然后我主要目前用国内外的这些AI的东西来帮我做一些做了之前所说的这些事情。 然后然后我觉得现在可能就是我自己个人的使用的体验上来说，确实是自己在用克劳德的模型和国内的之前用的 CK，还有小米的咪莫它差别确实还是比较大的，我感觉cloud确实是相对来说它模型的能力比较突出，它可能而且我自己工作的过程中我会用到一个的到它会有一个头脑风暴的skew，然后它能够边让我在跟他对话的过程之中边去呈现出来一个产品的原型，然后跟他交流的话，他会去改这个产品的原型呈现在我面前的一个方式，然后我能够一边看原型一边跟他交流，然后最后输出来一个满意的结果，然后或者说我还可以跟他去探讨某一个问题，或者某一个报告应该怎么写之类的，我觉得国内的模型可能在思考的能力或者推理能力这方面确实是不太我用的过程这种体验确实是还没有搞得这么能力这么强，以上是我使用 AI的一些经历和一些感受。
+          - generic [ref=e1394]:
+            - generic [ref=e1395]:
+              - generic [ref=e1396]: ✓ 答得好的部分
+              - generic [ref=e1397]: 待AI分析
+            - generic [ref=e1398]:
+              - generic [ref=e1399]: ✗ 需要改进
+              - generic [ref=e1400]: 待AI分析
+          - generic [ref=e1401]:
+            - generic [ref=e1402] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1403]:
+              - strong [ref=e1404]: 优化后的回答示例：
+              - paragraph [ref=e1405]: 请配置AI服务以获取改进建议
+        - generic [ref=e1406]:
+          - generic [ref=e1407]:
+            - button "✏️" [ref=e1408] [cursor=pointer]
+            - button "🗑️" [ref=e1409] [cursor=pointer]
+          - generic [ref=e1410]:
+            - generic [ref=e1411]: "问题 #21"
+            - generic [ref=e1413]: "考察: 待分析"
+          - generic [ref=e1414]: 你的回答
+          - generic [ref=e1415]: 我觉得我个人的优势我本身 AI对于产品非常感兴趣，所以有一个有一个自主性，然后我去努力的去尝试去学习，去了解现在的一些发展，还有一些使用，然后努力的去在工作生活中去融合。 然后另一方面我本身会有一个快速拉定的一个能力快速的去掌握，因为每次实习都是相当于是在一个自己完全陌生的环境之中，然后陌生的一些业务一些系统之类的，快速去上手快速去熟悉了解这个东西，然后快速去掌握的学习新知识的一个能力。 然后我觉得我个人的一个缺陷就是一方面，我觉得个人确实是需要在这个技术方面还需要多做研究，因为本身对于代码方向代码的这方面能力还是比较薄弱的，还需要多做了解多做研究。 然后另一方面说我可能在与之前您也说到会去一些一线和那些小哥什么的他们去打交道，然后我觉得我个人还需要在这方面去多做，多多努力，因为有一些群体我之前确实是接触的很少，然后也不太了解，也需要去与他们打交打交道过程中，也需要多去了解他们的一些习惯，他们的可能有一些情绪或者说工作的情况等等，我觉得这是我目前需要提高的一些地方。
+          - generic [ref=e1416]:
+            - generic [ref=e1417]:
+              - generic [ref=e1418]: ✓ 答得好的部分
+              - generic [ref=e1419]: 待AI分析
+            - generic [ref=e1420]:
+              - generic [ref=e1421]: ✗ 需要改进
+              - generic [ref=e1422]: 待AI分析
+          - generic [ref=e1423]:
+            - generic [ref=e1424] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1425]:
+              - strong [ref=e1426]: 优化后的回答示例：
+              - paragraph [ref=e1427]: 请配置AI服务以获取改进建议
+        - generic [ref=e1428]:
+          - generic [ref=e1429]:
+            - button "✏️" [ref=e1430] [cursor=pointer]
+            - button "🗑️" [ref=e1431] [cursor=pointer]
+          - generic [ref=e1432]:
+            - generic [ref=e1433]: "问题 #22"
+            - generic [ref=e1435]: "考察: 待分析"
+          - generic [ref=e1436]: 你的回答
+          - generic [ref=e1437]: 我想了解一下咱们这边主要做的一个业务的具体方向是什么？
+          - generic [ref=e1438]:
+            - generic [ref=e1439]:
+              - generic [ref=e1440]: ✓ 答得好的部分
+              - generic [ref=e1441]: 待AI分析
+            - generic [ref=e1442]:
+              - generic [ref=e1443]: ✗ 需要改进
+              - generic [ref=e1444]: 待AI分析
+          - generic [ref=e1445]:
+            - generic [ref=e1446] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1447]:
+              - strong [ref=e1448]: 优化后的回答示例：
+              - paragraph [ref=e1449]: 请配置AI服务以获取改进建议
+        - generic [ref=e1450]:
+          - generic [ref=e1451]:
+            - button "✏️" [ref=e1452] [cursor=pointer]
+            - button "🗑️" [ref=e1453] [cursor=pointer]
+          - generic [ref=e1454]:
+            - generic [ref=e1455]: "问题 #23"
+            - generic [ref=e1457]: "考察: 待分析"
+          - generic [ref=e1458]: 你的回答
+          - generic [ref=e1459]: 明白了。 咱这边对于实习生来说有什么期待，或者说有什么能力上面的要求吗？
+          - generic [ref=e1460]:
+            - generic [ref=e1461]:
+              - generic [ref=e1462]: ✓ 答得好的部分
+              - generic [ref=e1463]: 待AI分析
+            - generic [ref=e1464]:
+              - generic [ref=e1465]: ✗ 需要改进
+              - generic [ref=e1466]: 待AI分析
+          - generic [ref=e1467]:
+            - generic [ref=e1468] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1469]:
+              - strong [ref=e1470]: 优化后的回答示例：
+              - paragraph [ref=e1471]: 请配置AI服务以获取改进建议
+        - generic [ref=e1472]:
+          - generic [ref=e1473]:
+            - button "✏️" [ref=e1474] [cursor=pointer]
+            - button "🗑️" [ref=e1475] [cursor=pointer]
+          - generic [ref=e1476]:
+            - generic [ref=e1477]: "问题 #24"
+            - generic [ref=e1479]: "考察: 待分析"
+          - generic [ref=e1480]: 你的回答
+          - generic [ref=e1481]: 明白，我这边就没有其他的问题了。
+          - generic [ref=e1482]:
+            - generic [ref=e1483]:
+              - generic [ref=e1484]: ✓ 答得好的部分
+              - generic [ref=e1485]: 待AI分析
+            - generic [ref=e1486]:
+              - generic [ref=e1487]: ✗ 需要改进
+              - generic [ref=e1488]: 待AI分析
+          - generic [ref=e1489]:
+            - generic [ref=e1490] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1491]:
+              - strong [ref=e1492]: 优化后的回答示例：
+              - paragraph [ref=e1493]: 请配置AI服务以获取改进建议
+        - generic [ref=e1494]:
+          - generic [ref=e1495]:
+            - button "✏️" [ref=e1496] [cursor=pointer]
+            - button "🗑️" [ref=e1497] [cursor=pointer]
+          - generic [ref=e1498]:
+            - generic [ref=e1499]: "问题 #25"
+            - generic [ref=e1501]: "考察: 待分析"
+          - generic [ref=e1502]: 你的回答
+          - generic [ref=e1503]: 好勒，谢谢您，再见。
+          - generic [ref=e1504]:
+            - generic [ref=e1505]:
+              - generic [ref=e1506]: ✓ 答得好的部分
+              - generic [ref=e1507]: 待AI分析
+            - generic [ref=e1508]:
+              - generic [ref=e1509]: ✗ 需要改进
+              - generic [ref=e1510]: 待AI分析
+          - generic [ref=e1511]:
+            - generic [ref=e1512] [cursor=pointer]: 💡 改进建议 (点击收起)
+            - generic [ref=e1513]:
+              - strong [ref=e1514]: 优化后的回答示例：
+              - paragraph [ref=e1515]: 请配置AI服务以获取改进建议
