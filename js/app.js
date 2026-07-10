@@ -261,12 +261,20 @@ class App {
 
         // Header
         document.getElementById('interviewHeader').innerHTML = `
-            <h2>${this.escapeHtml(i.company)} - ${this.escapeHtml(i.round)}</h2>
-            <div class="meta">
-                <div>📅 ${i.date}</div>
-                <div>⏱️ ${i.duration || '?'}分钟</div>
-                <div>❓ ${i.analysis ? i.analysis.questions.length : 0}个问题</div>
-                <div>🏷️ ${this.escapeHtml(i.jobType)}</div>
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                <div>
+                    <h2>${this.escapeHtml(i.company)} - ${this.escapeHtml(i.round)}</h2>
+                    <div class="meta">
+                        <div>📅 ${i.date}</div>
+                        <div>⏱️ ${i.duration || '?'}分钟</div>
+                        <div>❓ ${i.analysis ? i.analysis.questions.filter((_, idx) => !(i.excludedQuestions || []).includes(idx)).length : 0}个问题</div>
+                        <div>🏷️ ${this.escapeHtml(i.jobType)}</div>
+                    </div>
+                </div>
+                <div style="display:flex;gap:8px;">
+                    ${i.transcript ? '<button class="btn btn-secondary" onclick="app.showTranscript()">转写文本</button>' : ''}
+                    ${i.analysis && i.analysis.questions.length > 0 ? '<button class="btn btn-secondary" onclick="app.showQuestionFilter()">筛选问题</button>' : ''}
+                </div>
             </div>
         `;
 
@@ -284,10 +292,19 @@ class App {
             return;
         }
 
-        qaList.innerHTML = i.analysis.questions.map((q, idx) => `
-            <div class="qa-item" id="qa-${idx}">
+        const excluded = new Set(i.excludedQuestions || []);
+        const visibleQuestions = i.analysis.questions
+            .map((q, idx) => ({ ...q, originalIdx: idx }))
+            .filter(q => !excluded.has(q.originalIdx));
+
+        qaList.innerHTML = visibleQuestions.map((q, displayIdx) => `
+            <div class="qa-item" id="qa-${q.originalIdx}">
+                <div class="qa-item-actions">
+                    <button class="btn-icon" onclick="app.editQuestion(${q.originalIdx})" title="编辑">✏️</button>
+                    <button class="btn-icon btn-delete" onclick="app.deleteQuestion(${q.originalIdx})" title="删除">🗑️</button>
+                </div>
                 <div class="question-section">
-                    <div class="question-num">问题 #${idx + 1}</div>
+                    <div class="question-num">问题 #${displayIdx + 1}</div>
                     ${q.isFollowUp ? '<div class="followup-indicator">↳ 追问</div>' : ''}
                     <div class="question-text">${this.escapeHtml(q.question)}</div>
                     <div>
@@ -317,7 +334,7 @@ class App {
             </div>
         `).join('');
 
-        this.updateTOC(i.analysis.questions);
+        this.updateTOC(visibleQuestions);
     }
 
     updateTOC(questions) {
@@ -328,9 +345,13 @@ class App {
         const i = this.currentInterview;
         breadcrumb.textContent = `${i.company} › ${i.jobType} › ${i.round}`;
 
-        tocItems.innerHTML = questions.map((q, idx) => {
+        tocItems.innerHTML = questions.map((q, displayIdx) => {
+            const originalIdx = q.originalIdx != null ? q.originalIdx : displayIdx;
             const label = q.question.length > 12 ? q.question.substring(0, 12) + '...' : q.question;
-            return `<div class="toc-item ${idx === 0 ? 'active' : ''}" onclick="app.scrollToQA(${idx})">#${idx + 1} ${this.escapeHtml(label)}</div>`;
+            return `<div class="toc-item ${displayIdx === 0 ? 'active' : ''}" onclick="app.scrollToQA(${originalIdx})">
+                <span class="toc-item-text">#${displayIdx + 1} ${this.escapeHtml(label)}</span>
+                <span class="toc-item-delete" onclick="event.stopPropagation(); app.deleteQuestion(${originalIdx})" title="删除该问题">×</span>
+            </div>`;
         }).join('');
     }
 
@@ -341,6 +362,281 @@ class App {
             document.querySelectorAll('.toc-item').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.toc-item')[idx]?.classList.add('active');
         }
+    }
+
+    async deleteQuestion(idx) {
+        const i = this.currentInterview;
+        if (!i || !i.analysis) return;
+        if (!confirm(`确定要删除问题 #${idx + 1} 吗？`)) return;
+
+        i.analysis.questions.splice(idx, 1);
+        await db.addInterview(i);
+        const listIdx = this.interviews.findIndex(x => x.id === i.id);
+        if (listIdx >= 0) this.interviews[listIdx] = i;
+        this.renderInterviewDetail();
+    }
+
+    editQuestion(idx) {
+        const i = this.currentInterview;
+        if (!i || !i.analysis) return;
+        const q = i.analysis.questions[idx];
+
+        this.editingQuestionIdx = idx;
+        document.getElementById('editQQuestion').value = q.question;
+        document.getElementById('editQAnswer').value = q.answer;
+        document.getElementById('editQuestionModal').classList.add('show');
+    }
+
+    async saveQuestionEdit() {
+        const idx = this.editingQuestionIdx;
+        const i = this.currentInterview;
+        if (idx == null || !i || !i.analysis) return;
+
+        const newQuestion = document.getElementById('editQQuestion').value.trim();
+        const newAnswer = document.getElementById('editQAnswer').value.trim();
+        if (!newQuestion || !newAnswer) { alert('问题和回答不能为空'); return; }
+
+        const q = i.analysis.questions[idx];
+        q.question = newQuestion;
+        q.answer = newAnswer;
+
+        // Re-analyze this single question
+        document.getElementById('editQuestionModal').classList.remove('show');
+        document.getElementById('processingModal').classList.add('show');
+        const progressFill = document.getElementById('progressFill');
+        const statusEl = document.getElementById('processingStatus');
+        statusEl.textContent = '正在重新分析该问题...';
+        progressFill.style.width = '50%';
+
+        try {
+            const result = await analyzer.reAnalyzeQuestion(newQuestion, newAnswer, i.jobType, i.jd || '');
+            if (result) {
+                q.intents = result.intents || q.intents;
+                q.evaluation = result.evaluation || q.evaluation;
+                q.suggestion = result.suggestion || q.suggestion;
+                q.confidence = result.confidence != null ? result.confidence : q.confidence;
+            }
+        } catch (err) {
+            console.warn('Re-analysis failed:', err);
+        }
+
+        await db.addInterview(i);
+        const listIdx = this.interviews.findIndex(x => x.id === i.id);
+        if (listIdx >= 0) this.interviews[listIdx] = i;
+
+        progressFill.style.width = '100%';
+        statusEl.textContent = '完成!';
+        await new Promise(r => setTimeout(r, 500));
+        this.hideModal();
+        this.renderInterviewDetail();
+    }
+
+    // --- Transcript Viewer ---
+
+    showTranscript() {
+        const i = this.currentInterview;
+        if (!i || !i.transcript) return;
+        document.getElementById('transcriptContent').textContent = i.transcript;
+        document.getElementById('transcriptModal').classList.add('show');
+    }
+
+    // --- Question Filter ---
+
+    showQuestionFilter() {
+        const i = this.currentInterview;
+        if (!i || !i.analysis || !i.analysis.questions.length) return;
+
+        if (!i.excludedQuestions) i.excludedQuestions = [];
+        if (!i.editedQuestions) i.editedQuestions = {};
+
+        this.filterState = {
+            excluded: new Set(i.excludedQuestions),
+            edits: JSON.parse(JSON.stringify(i.editedQuestions))
+        };
+
+        this.renderFilterList();
+        document.getElementById('questionFilterModal').classList.add('show');
+    }
+
+    renderFilterList() {
+        const i = this.currentInterview;
+        const questions = i.analysis.questions;
+        const container = document.getElementById('filterQuestionList');
+
+        container.innerHTML = questions.map((q, idx) => {
+            const checked = !this.filterState.excluded.has(idx);
+            const excludedClass = checked ? '' : 'excluded';
+            const edited = this.filterState.edits[idx];
+            const displayQ = edited ? edited.question : q.question;
+            const displayA = edited ? edited.answer : q.answer;
+            const modifiedTag = edited ? '<span class="filter-q-modified">已修改</span>' : '';
+
+            return `
+                <div class="filter-q-item ${excludedClass}" id="filterItem-${idx}">
+                    <input type="checkbox" ${checked ? 'checked' : ''} onchange="app.toggleFilterQuestion(${idx}, this.checked)">
+                    <div class="filter-q-content">
+                        <div class="filter-q-num">问题 #${idx + 1} ${modifiedTag}</div>
+                        <div class="filter-q-text" id="filterQ-${idx}" onclick="app.editFilterField(${idx}, 'question')">${this.escapeHtml(displayQ)}</div>
+                        <div class="filter-q-answer-toggle" onclick="app.toggleFilterAnswer(${idx})">查看/编辑回答 ▾</div>
+                        <div class="filter-q-answer" id="filterA-${idx}" onclick="app.editFilterField(${idx}, 'answer')">${this.escapeHtml(displayA)}</div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        this.updateFilterCount();
+
+        const selectAll = document.getElementById('filterSelectAll');
+        selectAll.checked = this.filterState.excluded.size === 0;
+        selectAll.onchange = () => this.toggleFilterAll(selectAll.checked);
+    }
+
+    toggleFilterQuestion(idx, checked) {
+        if (checked) {
+            this.filterState.excluded.delete(idx);
+        } else {
+            this.filterState.excluded.add(idx);
+        }
+        const item = document.getElementById(`filterItem-${idx}`);
+        item.classList.toggle('excluded', !checked);
+        this.updateFilterCount();
+    }
+
+    toggleFilterAll(checked) {
+        const i = this.currentInterview;
+        const questions = i.analysis.questions;
+        for (let idx = 0; idx < questions.length; idx++) {
+            if (checked) {
+                this.filterState.excluded.delete(idx);
+            } else {
+                this.filterState.excluded.add(idx);
+            }
+        }
+        this.renderFilterList();
+    }
+
+    toggleFilterAnswer(idx) {
+        const el = document.getElementById(`filterA-${idx}`);
+        el.classList.toggle('show');
+    }
+
+    updateFilterCount() {
+        const total = this.currentInterview.analysis.questions.length;
+        const selected = total - this.filterState.excluded.size;
+        document.getElementById('filterCount').textContent = `已选 ${selected} / 共 ${total} 题`;
+    }
+
+    editFilterField(idx, field) {
+        const elId = field === 'question' ? `filterQ-${idx}` : `filterA-${idx}`;
+        const el = document.getElementById(elId);
+
+        if (el.querySelector('textarea')) return;
+
+        const i = this.currentInterview;
+        const q = i.analysis.questions[idx];
+        const edited = this.filterState.edits[idx];
+        const currentValue = edited ? edited[field] : q[field];
+
+        const textarea = document.createElement('textarea');
+        textarea.className = 'filter-q-editing';
+        textarea.value = currentValue;
+        textarea.rows = field === 'question' ? 2 : 4;
+
+        const originalContent = el.innerHTML;
+        el.innerHTML = '';
+        el.appendChild(textarea);
+        textarea.focus();
+
+        textarea.addEventListener('blur', () => {
+            const newValue = textarea.value.trim();
+            if (!newValue) {
+                el.innerHTML = originalContent;
+                return;
+            }
+
+            const original = q[field];
+            if (newValue !== original) {
+                if (!this.filterState.edits[idx]) {
+                    this.filterState.edits[idx] = { question: q.question, answer: q.answer };
+                }
+                this.filterState.edits[idx][field] = newValue;
+                el.innerHTML = this.escapeHtml(newValue);
+                this.renderFilterList();
+            } else {
+                if (this.filterState.edits[idx]) {
+                    this.filterState.edits[idx][field] = newValue;
+                    const e = this.filterState.edits[idx];
+                    if (e.question === q.question && e.answer === q.answer) {
+                        delete this.filterState.edits[idx];
+                    }
+                }
+                el.innerHTML = this.escapeHtml(newValue);
+                this.renderFilterList();
+            }
+        });
+    }
+
+    async confirmQuestionFilter() {
+        const i = this.currentInterview;
+        i.excludedQuestions = [...this.filterState.excluded];
+
+        const prevEdits = i.editedQuestions || {};
+        const newEdits = this.filterState.edits;
+        const toReanalyze = [];
+
+        for (const [idxStr, edit] of Object.entries(newEdits)) {
+            const idx = parseInt(idxStr);
+            const prev = prevEdits[idxStr];
+            const q = i.analysis.questions[idx];
+            const isNewEdit = edit.question !== q.question || edit.answer !== q.answer;
+
+            if (isNewEdit && (!prev || edit.question !== prev.question || edit.answer !== prev.answer)) {
+                toReanalyze.push(idx);
+            }
+        }
+
+        i.editedQuestions = newEdits;
+
+        const statusEl = document.getElementById('filterReanalysisStatus');
+        const confirmBtn = document.getElementById('filterConfirmBtn');
+
+        if (toReanalyze.length > 0) {
+            confirmBtn.disabled = true;
+            for (let j = 0; j < toReanalyze.length; j++) {
+                const idx = toReanalyze[j];
+                const edit = newEdits[idx];
+                statusEl.textContent = `正在重新分析第 ${idx + 1} 题 (${j + 1}/${toReanalyze.length})...`;
+
+                try {
+                    const result = await analyzer.reAnalyzeQuestion(edit.question, edit.answer, i.jobType, i.jd || '');
+                    if (result) {
+                        const q = i.analysis.questions[idx];
+                        q.question = edit.question;
+                        q.answer = edit.answer;
+                        q.intents = result.intents || q.intents;
+                        q.evaluation = result.evaluation || q.evaluation;
+                        q.suggestion = result.suggestion || q.suggestion;
+                        q.confidence = result.confidence != null ? result.confidence : q.confidence;
+                    }
+                } catch (err) {
+                    console.warn(`Re-analysis failed for question ${idx + 1}:`, err);
+                    statusEl.textContent = `第 ${idx + 1} 题重新分析失败，保留原结果`;
+                    await new Promise(r => setTimeout(r, 1000));
+                    const q = i.analysis.questions[idx];
+                    q.question = edit.question;
+                    q.answer = edit.answer;
+                }
+            }
+            confirmBtn.disabled = false;
+        }
+
+        await db.addInterview(i);
+        const listIdx = this.interviews.findIndex(x => x.id === i.id);
+        if (listIdx >= 0) this.interviews[listIdx] = i;
+
+        statusEl.textContent = '';
+        this.hideModal();
+        this.renderInterviewDetail();
     }
 
     // --- Upload & Analysis ---
@@ -355,6 +651,9 @@ class App {
         document.getElementById('uploadModal').classList.remove('show');
         document.getElementById('processingModal').classList.remove('show');
         document.getElementById('editModal').classList.remove('show');
+        document.getElementById('editQuestionModal').classList.remove('show');
+        document.getElementById('questionFilterModal').classList.remove('show');
+        document.getElementById('transcriptModal').classList.remove('show');
     }
 
     handleFileSelect(file) {
@@ -486,6 +785,10 @@ class App {
         this.currentInterview = interview;
         this.currentCompany = company;
         this.showPage('interview');
+
+        if (interview.analysis && interview.analysis.questions.length > 0) {
+            this.showQuestionFilter();
+        }
     }
 
     async analyzeManualTranscript() {
@@ -517,6 +820,10 @@ class App {
         await new Promise(r => setTimeout(r, 500));
         this.hideModal();
         this.renderInterviewDetail();
+
+        if (this.currentInterview.analysis && this.currentInterview.analysis.questions.length > 0) {
+            this.showQuestionFilter();
+        }
     }
 
     resetUploadForm() {

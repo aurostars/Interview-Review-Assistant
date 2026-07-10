@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>面试复盘助手</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.css?v=3">
     <style>
         .upload-tabs { display: flex; gap: 0; margin-bottom: 16px; border-bottom: 2px solid #e9ecef; }
         .upload-tab { padding: 8px 16px; cursor: pointer; font-size: 14px; font-weight: 500; color: #6c757d; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
@@ -304,10 +304,62 @@
         </div>
     </div>
 
-    <script src="js/db.js"></script>
-    <script src="js/whisper.js"></script>
-    <script src="js/audio.js"></script>
-    <script src="js/analyzer.js"></script>
-    <script src="js/app.js"></script>
+    <!-- Transcript Modal -->
+    <div class="modal" id="transcriptModal">
+        <div class="modal-content modal-large">
+            <h2>转写文本</h2>
+            <pre class="transcript-content" id="transcriptContent"></pre>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="app.hideModal()">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Question Filter Modal -->
+    <div class="modal" id="questionFilterModal">
+        <div class="modal-content modal-large">
+            <h2>筛选面试问题</h2>
+            <p class="filter-modal-desc">选择要保留的问题，点击问题或回答文本可编辑</p>
+            <div class="filter-actions-top">
+                <label class="filter-select-all">
+                    <input type="checkbox" id="filterSelectAll" checked> 全选
+                </label>
+                <span class="filter-count" id="filterCount">已选 0 / 共 0 题</span>
+            </div>
+            <div class="filter-question-list" id="filterQuestionList"></div>
+            <div class="filter-modal-footer">
+                <div id="filterReanalysisStatus" class="filter-status"></div>
+                <div class="modal-actions">
+                    <button class="btn btn-primary" id="filterConfirmBtn" onclick="app.confirmQuestionFilter()">确认</button>
+                    <button class="btn btn-secondary" onclick="app.hideModal()">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Question Modal -->
+    <div class="modal" id="editQuestionModal">
+        <div class="modal-content">
+            <h2>编辑问题</h2>
+            <div class="form-group">
+                <label>面试官的问题</label>
+                <textarea id="editQQuestion" rows="3" style="width:100%;padding:12px;border:1px solid #ced4da;border-radius:6px;font-size:14px;resize:vertical;"></textarea>
+            </div>
+            <div class="form-group">
+                <label>你的回答</label>
+                <textarea id="editQAnswer" rows="6" style="width:100%;padding:12px;border:1px solid #ced4da;border-radius:6px;font-size:14px;resize:vertical;"></textarea>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-primary" onclick="app.saveQuestionEdit()">保存并重新分析</button>
+                <button class="btn btn-secondary" onclick="app.hideModal()">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/db.js?v=3"></script>
+    <script src="js/whisper.js?v=3"></script>
+    <script src="js/audio.js?v=3"></script>
+    <script src="js/analyzer.js?v=3"></script>
+    <script src="js/app.js?v=3"></script>
 </body>
 </html>

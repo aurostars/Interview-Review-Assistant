@@ -120,10 +120,30 @@ body.sidebar-expanded .main-content {
     transition: all 0.2s;
     font-size: 13px;
     color: #6c757d;
-    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.toc-item-text {
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    min-width: 0;
 }
+.toc-item-delete {
+    display: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #dc2626;
+    padding: 0 4px;
+    border-radius: 3px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+.toc-item:hover .toc-item-delete { display: inline-block; }
+.toc-item-delete:hover { background: rgba(220,38,38,0.1); }
 .toc-item:hover { background: rgba(66,99,235,0.06); color: #4263eb; }
 .toc-item.active { background: rgba(66,99,235,0.12); color: #4263eb; }
 
@@ -285,7 +305,18 @@ body.sidebar-expanded .main-content {
     padding: 24px;
     margin-bottom: 16px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    position: relative;
 }
+.qa-item-actions {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+.qa-item:hover .qa-item-actions { opacity: 1; }
 .question-section {
     margin-bottom: 20px;
     padding-bottom: 20px;
@@ -523,4 +554,147 @@ body.sidebar-expanded .main-content {
     .main-content { padding: 16px; }
     .company-grid { grid-template-columns: 1fr; }
     .detail-header .meta { flex-wrap: wrap; gap: 12px; }
+}
+
+/* Transcript Modal */
+.transcript-content {
+    flex: 1;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: "SimHei", "黑体", "Microsoft YaHei", sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+    margin-bottom: 16px;
+    max-height: 60vh;
+}
+
+/* Question Filter Modal */
+.modal-large {
+    max-width: 700px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+}
+.filter-modal-desc {
+    font-size: 13px;
+    color: #6c757d;
+    margin-bottom: 12px;
+}
+.filter-actions-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e9ecef;
+}
+.filter-select-all {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.filter-count {
+    font-size: 13px;
+    color: #6c757d;
+}
+.filter-question-list {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 16px;
+}
+.filter-q-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: opacity 0.2s;
+}
+.filter-q-item.excluded {
+    opacity: 0.4;
+    background: #f8f9fa;
+}
+.filter-q-item input[type="checkbox"] {
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+.filter-q-content {
+    flex: 1;
+    min-width: 0;
+}
+.filter-q-num {
+    font-size: 12px;
+    color: #6c757d;
+    margin-bottom: 4px;
+}
+.filter-q-text {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+}
+.filter-q-text:hover {
+    border-color: #dee2e6;
+    background: #f8f9fa;
+}
+.filter-q-answer-toggle {
+    font-size: 12px;
+    color: #4263eb;
+    cursor: pointer;
+    margin-bottom: 4px;
+}
+.filter-q-answer {
+    font-size: 13px;
+    color: #495057;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    display: none;
+}
+.filter-q-answer.show {
+    display: block;
+}
+.filter-q-answer:hover {
+    border-color: #dee2e6;
+    background: #f8f9fa;
+}
+.filter-q-editing {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #4263eb;
+    border-radius: 4px;
+    font-size: 13px;
+    resize: vertical;
+    font-family: inherit;
+}
+.filter-q-modified {
+    display: inline-block;
+    font-size: 11px;
+    color: #e67700;
+    background: #fff3bf;
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin-left: 8px;
+}
+.filter-modal-footer {
+    border-top: 1px solid #e9ecef;
+    padding-top: 12px;
+}
+.filter-status {
+    font-size: 13px;
+    color: #495057;
+    margin-bottom: 8px;
+    min-height: 20px;
 }
