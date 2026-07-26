@@ -65,10 +65,29 @@
 - Python 3.7+
 - 现代浏览器（Chrome / Edge / Firefox）
 
-### 启动
+### Windows 一键使用（推荐）
+
+**第一步：安装依赖环境**
+
+双击运行 **`安装环境.bat`**。脚本会自动：
+
+- 检测可用的 Python 解释器（优先使用 `py`，跳过 Windows 商店占位程序）
+- 升级 pip
+- 根据 `requirements.txt` 安装项目依赖
+
+若提示未找到 Python，请先到 [python.org](https://www.python.org/downloads/) 安装 Python 3.7+，安装时勾选 **Add Python to PATH**。
+
+**第二步：启动项目**
+
+双击运行 **`启动项目.bat`**。脚本会自动启动服务并打开浏览器访问 `http://localhost:8080`，按 `Ctrl+C` 可停止服务。
+
+### 手动启动（跨平台）
 
 ```bash
-cd app
+# 安装依赖
+pip install -r requirements.txt
+
+# 启动服务
 python server.py
 ```
 

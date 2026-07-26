@@ -1,14 +1,35 @@
 @echo off
-chcp 65001 >nul
-echo 正在启动面试复盘助手...
+REM ===== Interview Review Assistant - one-click start =====
+setlocal
+
+cd /d "%~dp0"
+
+REM --- Detect a usable Python interpreter ---
+set "PY_CMD="
+where py >nul 2>&1
+if %errorlevel%==0 (
+    py --version >nul 2>&1
+    if %errorlevel%==0 set "PY_CMD=py"
+)
+if not defined PY_CMD (
+    where python >nul 2>&1
+    if %errorlevel%==0 (
+        python --version >nul 2>&1
+        if %errorlevel%==0 set "PY_CMD=python"
+    )
+)
+if not defined PY_CMD (
+    echo [ERROR] Python not found. Please run the setup script first.
+    pause
+    exit /b 1
+)
+
+echo Starting Interview Review Assistant...
+echo Server: http://localhost:8080
+echo Press Ctrl+C to stop.
 echo.
-
-cd /d "%~dp0app"
-
-echo 启动服务器在 http://localhost:8080
-echo 按 Ctrl+C 可停止服务器
-echo.
-
 start http://localhost:8080
-
-python server.py
+%PY_CMD% server.py
+echo.
+echo Server stopped. Press any key to close...
+pause >nul
